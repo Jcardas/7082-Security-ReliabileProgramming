@@ -12,7 +12,7 @@ class CheckoutService:
         self.payment_gateway = payment_gateway
 
     def checkout(self, cart, payment_token, request_id):
-        # Defect 9 (checkout.py - request validation and idempotency):
+        # Defect 9:
         # Where: checkout() only warned on missing request_id for orders > 1000 and never checked duplicates.
         # What can go wrong: Missing identifiers or repeated checkout calls cause duplicate charges and orders.
         # Correction: Required non-empty user_id, payment_token, and request_id, and returned any existing
@@ -58,7 +58,7 @@ class CheckoutService:
         cart._sync_discount()
         amount = cart.total()
 
-        # Defect 10 (checkout.py - sensitive data exposure):
+        # Defect 10:
         # Where: print(f'Charging payment token: {payment_token}') logged the raw payment token.
         # What can go wrong: Sensitive payment credentials leak into stdout/log files.
         # Correction: Removed the raw payment_token from console output.

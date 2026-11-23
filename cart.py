@@ -26,6 +26,7 @@ class ShoppingCart:
         self.discount_code = None
         self.discounted_total = None
 
+    # Used for Defect 7
     # Defines logic for calculating the rounded monetary subtotal across all line items.
     def _subtotal_decimal(self):
         total = sum(

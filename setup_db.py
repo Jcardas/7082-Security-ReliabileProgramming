@@ -2,7 +2,7 @@
 import sqlite3
 import sys
 
-# Defect 9 (setup_db.py - orders table):
+# Defect 9 Continued:
 # Where: orders table definition lacked a uniqueness constraint on (user_id, request_id).
 # What can go wrong: Repeated checkout calls with the same request_id can insert duplicate orders.
 # Correction: Added a unique index on (user_id, request_id) to enforce idempotency at the DB level.

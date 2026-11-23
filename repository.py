@@ -72,7 +72,7 @@ class StoreRepository:
             )
             return cur.rowcount == 1
 
-    # Defect 9 (repository.py - idempotent order lookup and atomic finalization):
+    # Defect 9:
     # Where: save_order inserted new rows blindly with no request_id lookup or stock transaction.
     # What can go wrong: Repeated checkout requests create duplicate orders and partial stock updates.
     # Correction: Added get_order_by_request_id, idempotent save_order, and atomic finalize_paid_order.
